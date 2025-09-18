@@ -1,3 +1,5 @@
-export const sam = (req,res) => {res.send("Samuel Smith");};
+const sam = (req,res) => {res.send("Samuel Smith");};
 
-export const wife = (req,res) => {res.send("Maddie Smith");};
+const wife = (req,res) => {res.send("Maddie Smith");};
+
+export default {sam,wife};
