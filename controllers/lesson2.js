@@ -1,7 +1,14 @@
 import {client} from "../db/connections.js";
 
 const contacts = async (req,res) => {
-    await client.connect();
+    try {
+        await client.connect();
+    } catch (error) {
+        console.log(error);
+        res.status(500).send("Error connecting to database");
+        return;
+    }
+    
     let allContacts;
     if (req.params.id) {
         allContacts = await client.db("webService").collection("contacts").find({fname: req.params.id}).toArray();
